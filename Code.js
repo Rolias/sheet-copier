@@ -1,13 +1,13 @@
 // @ts-check 
 
-function getMostRecentFileInFolder(folderId) {
+function getMostRecentFileInFolder_(folderId) {
   const folder = DriveApp.getFolderById(folderId);
   const files = folder.getFiles();
   const file = files.next();
   return file;
 }
 
-function getAllDataFromFirstSheet(file) {
+function getAllDataFromFirstSheet_(file) {
   const ss = SpreadsheetApp.open(file);
   const sheet = ss.getSheets()[0];
   const fullDataRange = sheet.getDataRange();
@@ -15,17 +15,16 @@ function getAllDataFromFirstSheet(file) {
   return allData;
 }
 
-function getSheetById(id) {
+function getSheetById_(id) {
   const ss = SpreadsheetApp.openById(id);
   const sheet = ss.getSheets()[0];
   return sheet;
 }
 
-function copyDataToDestSheet(data, sheet) {
+function copyDataToDestSheet_(data, sheet) {
   const rows = data.length;
   const cols = data[0].length;
   sheet.getRange(1, 1, rows, cols).setValues(data);
-
 }
 
 /**
@@ -37,23 +36,10 @@ function copyDataToDestSheet(data, sheet) {
  * exported copyDataFromSourceFolderToDestSheet
  */
 function copyDataFromSourceFolderToDestSheet(srcFolderId, destSheetId) { // eslint-disable-line no-unused-vars
-  const file = getMostRecentFileInFolder(srcFolderId);
-  const data = getAllDataFromFirstSheet(file);
-  const sheet = getSheetById(destSheetId);
-  copyDataToDestSheet(data, sheet);
+  const file = getMostRecentFileInFolder_(srcFolderId);
+  const data = getAllDataFromFirstSheet_(file);
+  const sheet = getSheetById_(destSheetId);
+  copyDataToDestSheet_(data, sheet);
   return null;
 }
-
-  // function copyMostRecentSnapshot() {
-  //   copyDataToMostRecentSnapshotFile(SRC_SNAPSHOT_FOLDER_ID, DEST_SNAPSHOT_SHEET_ID);
-  // }
-  // function copyMostRecentAugmentedSnapshot() {
-  //   copyDataToMostRecentSnapshotFile(SRC_AUGMENTED_FOLDER_ID, DEST_AUGMENTED_SHEET_DEST_ID);
-  // }
-  // function copyMostRecentPathSnapshot() {
-  //   copyDataToMostRecentSnapshotFile(SRC_PATH_FOLDER_ID, DEST_PATH_SHEET_ID);
-  // }
-
-
-
 
