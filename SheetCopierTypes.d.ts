@@ -1,0 +1,1 @@
+export interface getNamedSheetFromId(id: string, name: string);
