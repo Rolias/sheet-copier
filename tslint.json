@@ -3,11 +3,11 @@
   "extends": [
     "tslint-clean-code"
   ],
-  "jsRules": {
+  "jsRules": {},
+  "rules": {
     "newspaper-order": true,
     "no-var-keyword": true,
-    "no-duplicate-keyword": true
+    "no-duplicate-variable": true
   },
-  "rules": {},
   "rulesDirectory": []
 }
