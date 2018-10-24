@@ -1,4 +1,4 @@
-import { SheetCopier, DriveFile } from "./SheetCopierTypes";
+import { DriveFile, SheetCopier } from "./SheetCopierTypes";
 
 declare var exports: SheetCopier;
 
@@ -9,10 +9,10 @@ declare var exports: SheetCopier;
  * @param {string} destSheetId  - the id string of the spreadsheet that is the destination
  * @return {void}
  */
-function copyDataFromSourceFolderToDestSheet(srcFolderId: string, destSheetId: string): void { // eslint-disable-line no-unused-vars
+export function copyDataFromSourceFolderToDestSheet(srcFolderId: string, destSheetId: string): void {
   const file = getMostRecentFileInFolder_(srcFolderId);
-  const file_sheet = exports.getFirstSheetFromFile_(file);
-  const data = exports.getDataFromSheet(file_sheet);
+  const fileSheet = exports.getFirstSheetFromFile_(file);
+  const data = exports.getDataFromSheet(fileSheet);
   const sheet = exports.getFirstSheetFromId_(destSheetId);
   exports.copyDataToSheet(data, sheet);
 }

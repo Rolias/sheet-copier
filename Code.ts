@@ -1,13 +1,13 @@
-import { Sheet, DataValues, DriveFile } from "./SheetCopierTypes";
+import { DataValues, DriveFile, Sheet } from "./SheetCopierTypes";
 
-//====================
-//PUBLIC FUNCTIONS 
-//====================
+// ====================
+// PUBLIC FUNCTIONS
+// ====================
 
 /**
  * Copy data into sheet, using size of data to get proper range
- * @param {Object[][]} data double array from a google sheet 
- * @param {GoogleAppsScript.Spreadsheet.Sheet} sheet - the destination sheet 
+ * @param {Object[][]} data double array from a google sheet
+ * @param {GoogleAppsScript.Spreadsheet.Sheet} sheet - the destination sheet
  * @return {void}
  */
 export function copyDataToSheet(data: object[][], sheet: Sheet): void {// eslint-disable-line no-unused-vars
@@ -18,7 +18,7 @@ export function copyDataToSheet(data: object[][], sheet: Sheet): void {// eslint
 
 /**
  * Get all the data from the passed sheet reference
- * @param {GoogleAppsScript.Spreadsheet.Sheet} sheet reference to google sheet 
+ * @param {GoogleAppsScript.Spreadsheet.Sheet} sheet reference to google sheet
  * @return {Object[][]} the sheet's data
  */
 export function getDataFromSheet(sheet: GoogleAppsScript.Spreadsheet.Sheet): DataValues {
@@ -29,7 +29,7 @@ export function getDataFromSheet(sheet: GoogleAppsScript.Spreadsheet.Sheet): Dat
 /**
  * Using the active spreadsheet, return the named sheet
  * @param {string} sheetName the name of the sheet we want returned
- * @return {Sheet} 
+ * @return {Sheet}
  */
 function getActiveSheetByName(sheetName: string): Sheet {// eslint-disable-line no-unused-vars
   let ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -37,8 +37,8 @@ function getActiveSheetByName(sheetName: string): Sheet {// eslint-disable-line 
 }
 
 /**
- * Return a named sheet from a spreadsheet. 
- * @param {string} spreadsheetId of the spreadsheet 
+ * Return a named sheet from a spreadsheet.
+ * @param {string} spreadsheetId of the spreadsheet
  * @param {*} sheetName of the sheet of interest
  * @return {Sheet} a google sheet reference
  */
@@ -47,9 +47,9 @@ function getNamedSheetFromId(spreadsheetId: string, sheetName: string): Sheet {/
   return ss.getSheetByName(sheetName);
 }
 
-//==============================
-//PRIVATE GOOGLE LIB FUNCTIONS 
-//==============================
+// ==========================================
+// PRIVATE GOOGLE LIB FUNCTIONS - end with _
+// ==========================================
 /**
  * PRIVATE
  * Get the first sheet reference from the spreadsheet that has the passed Google Drive File reference
@@ -64,14 +64,10 @@ export function getFirstSheetFromFile_(file: DriveFile): Sheet {
 /**
  * PRIVATE
  * Get the first sheet reference from the spreadsheet that has the passed id
- * @param {string} id spreadsheet's id 
+ * @param {string} id spreadsheet's id
  * @return {Sheet} a google sheet reference
  */
 export function getFirstSheetFromId_(id: string): Sheet {
   const ss = SpreadsheetApp.openById(id);
   return ss.getSheets()[0];
 }
-
-
-
-
