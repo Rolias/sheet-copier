@@ -1,3 +1,5 @@
+import { Sheet, DataValues, DriveFile } from "./SheetCopierTypes";
+
 //====================
 //PUBLIC FUNCTIONS 
 //====================
@@ -8,7 +10,7 @@
  * @param {GoogleAppsScript.Spreadsheet.Sheet} sheet - the destination sheet 
  * @return {void}
  */
-export function copyDataToSheet(data: object[][], sheet: GoogleAppsScript.Spreadsheet.Sheet): void {// eslint-disable-line no-unused-vars
+export function copyDataToSheet(data: object[][], sheet: Sheet): void {// eslint-disable-line no-unused-vars
   const rows = data.length;
   const cols = data[0].length;
   sheet.getRange(1, 1, rows, cols).setValues(data);

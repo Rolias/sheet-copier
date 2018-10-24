@@ -1,4 +1,4 @@
-import { SheetCopier } from "./SheetCopierTypes";
+import { SheetCopier, DriveFile } from "./SheetCopierTypes";
 
 declare var exports: SheetCopier;
 
