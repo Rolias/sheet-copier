@@ -1,4 +1,8 @@
-//declare function getNamedSheetFromId(id: string, name: string);
+
+type Sheet = GoogleAppsScript.Spreadsheet.Sheet;
+type DataValues = object[][];
+type DriveFile = GoogleAppsScript.Drive.File;
+
 export interface SheetCopier {
   getDataFromSheet(sheet: Sheet): object[][];
   getNamedSheetFromId(id: string, name: string): Sheet;

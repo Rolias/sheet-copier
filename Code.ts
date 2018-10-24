@@ -41,8 +41,8 @@ function getActiveSheetByName(sheetName: string): Sheet {// eslint-disable-line 
  * @return {Sheet} a google sheet reference
  */
 function getNamedSheetFromId(spreadsheetId: string, sheetName: string): Sheet {// eslint-disable-line no-unused-vars
-  const ss = SpreadsheetApp.openById(id);
-  return ss.getSheetByName(name);
+  const ss = SpreadsheetApp.openById(spreadsheetId);
+  return ss.getSheetByName(sheetName);
 }
 
 //==============================
