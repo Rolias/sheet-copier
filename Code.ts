@@ -10,7 +10,10 @@ import { DataValues, DriveFile, Sheet } from "./SheetCopierTypes";
  * @param {GoogleAppsScript.Spreadsheet.Sheet} sheet - the destination sheet
  * @return {void}
  */
-export function copyDataToSheet(data: object[][], sheet: Sheet): void {// eslint-disable-line no-unused-vars
+export function copyDataToSheet(data: object[][], sheet: Sheet): void {
+  // eslint-disable-line no-unused-vars
+  const destRange = sheet.getDataRange();
+  destRange.clear();
   const rows = data.length;
   const cols = data[0].length;
   sheet.getRange(1, 1, rows, cols).setValues(data);
@@ -21,8 +24,10 @@ export function copyDataToSheet(data: object[][], sheet: Sheet): void {// eslint
  * @param {GoogleAppsScript.Spreadsheet.Sheet} sheet reference to google sheet
  * @return {Object[][]} the sheet's data
  */
-export function getDataFromSheet(sheet: GoogleAppsScript.Spreadsheet.Sheet): DataValues {
-  const fullDataRange = sheet.getDataRange();
+export function getDataFromSheet(
+  sheet: GoogleAppsScript.Spreadsheet.Sheet
+): DataValues {
+  const fullDataRange: GoogleAppsScript.Spreadsheet.Range = sheet.getDataRange();
   return fullDataRange.getValues();
 }
 
@@ -31,7 +36,8 @@ export function getDataFromSheet(sheet: GoogleAppsScript.Spreadsheet.Sheet): Dat
  * @param {string} sheetName the name of the sheet we want returned
  * @return {Sheet}
  */
-function getActiveSheetByName(sheetName: string): Sheet {// eslint-disable-line no-unused-vars
+function getActiveSheetByName(sheetName: string): Sheet {
+  // eslint-disable-line no-unused-vars
   let ss = SpreadsheetApp.getActiveSpreadsheet();
   return ss.getSheetByName(sheetName);
 }
@@ -39,10 +45,11 @@ function getActiveSheetByName(sheetName: string): Sheet {// eslint-disable-line 
 /**
  * Return a named sheet from a spreadsheet.
  * @param {string} spreadsheetId of the spreadsheet
- * @param {*} sheetName of the sheet of interest
+ * @param {string} sheetName of the sheet of interest
  * @return {Sheet} a google sheet reference
  */
-function getNamedSheetFromId(spreadsheetId: string, sheetName: string): Sheet {// eslint-disable-line no-unused-vars
+function getNamedSheetFromId(spreadsheetId: string, sheetName: string): Sheet {
+  // eslint-disable-line no-unused-vars
   const ss = SpreadsheetApp.openById(spreadsheetId);
   return ss.getSheetByName(sheetName);
 }
